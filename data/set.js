@@ -1,6 +1,6 @@
 
 
-const sets= 
+const set= 
 [{
     id:1,
     title:'Order Shift',
@@ -26,4 +26,4 @@ const sets=
     lore:'At last, the time has come again.Thou hast been brought here to unleash the forces sealed away within. Spread your wings, and soar the skies of a new world! Take hold of fate righteous blade',
 }]
 
-module.exports = sets;
+module.exports = set;
