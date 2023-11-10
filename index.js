@@ -7,66 +7,38 @@ const fs = require('fs');
 
 //imports 
 
-const deck = require ("./data/deck");
-const leaders = require ('./data/leaders');
-const set = require ('./data/set');
+const deck = require ("./routes/deckRoutes");
+const leaders = require ('./routes/leadersRoutes');
+const set = require ('./routes/setRoutes');
+const  compression = require ('compression')
+
+
+
+
 
 
 
 
 //Home========================
 app.get("/", (req, res) => {
-    res.send("Welcome");
+    res.send("Welcome".repeat(100000));
   });
 
-
-
+//MiddleWare=====================
 //leader ====================================
-app.get('/api/leaders',(req,res)=>{
-    
-    res.json(leaders);
-});
-
-app.get('/api/leaders/:id',(req,res)=>{
-    const leader = leaders.find((u) => u.id == req.params.id);
-    console.log(leader);
-    //if the user exists display the json data
-    if (leader) res.json(leader);
-    else next();
-})
-
+app.use('/api/leaders', leaders)
 
 //deck
-app.get('/api/deck',(req,res)=>{
-    
-    res.json(deck);
-});
-
-app.get('/api/deck/:id',(req,res)=>{
-    const decks = deck.find((u) => u.id == req.params.id);
-    console.log(decks);
-    //if the user exists display the json data
-    if (decks) res.json(decks);
-    else next();
-})
-
+app.use('/api/deck', deck);
 
 //set
-app.get('/api/set',(req,res)=>{
-    
-    res.json(set);
-});
-
-app.get('/api/set/:id',(req,res)=>{
-    const sets = set.find((u) => u.id == req.params.id);
-    console.log(set);
-    //if the user exists display the json data
-    if (sets) res.json(sets);
-    else next();
-})
+app.use('/api/set', set)
 
 
-//MiddleWare=====================
+
+
+
+
 
 
 
