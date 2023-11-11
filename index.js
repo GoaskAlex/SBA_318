@@ -3,26 +3,32 @@ console.log('Tetris');
 const express = require('express');
 const app = express();
 const port = 3000;
-const fs = require('fs');
+
+
 
 //imports 
 
 const deck = require ("./routes/deckRoutes");
 const leaders = require ('./routes/leadersRoutes');
 const set = require ('./routes/setRoutes');
-const  compression = require ('compression')
 
 
 
 
 
+/// view engine
+
+app.set('view engine','ejs');
 
 
 
-//Home========================
+//Home and Render========================
 app.get("/", (req, res) => {
-    res.send("Welcome".repeat(100000));
+    res.render('temp',{id1:"1", name1:"Erika", craft1:"Swordcraft",id2:"2", name2:"Itsurgi", craft2:"Bloodcraft",id3:"3", name3:"Kagero", craft3:"Shadowcraft" });
   });
+
+
+
 
 //MiddleWare=====================
 //leader ====================================
@@ -37,16 +43,13 @@ app.use('/api/set', set)
 
 
 
-
-
-
-
-
-
 //error handling middleware===============
 app.use((err, req, res, next)=>{
      res.status(500).send(err.message)
 })
+
+
+
 
 
 
