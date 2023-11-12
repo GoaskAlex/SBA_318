@@ -1,0 +1,2 @@
+John Rodriguez this project is building a restful api, for a card game. With its leaders, decks , card sets, and leader images. 
+The view engine is ejs. This just creates a basic table for viewing some of the content. Was not sure to what extent to produce as viewership. 
